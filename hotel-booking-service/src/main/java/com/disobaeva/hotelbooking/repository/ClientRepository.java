@@ -1,0 +1,16 @@
+package com.disobaeva.hotelbooking.repository;
+
+import com.disobaeva.hotelbooking.model.entity.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+/** Репозиторий клиентов. */
+@Repository
+public interface ClientRepository extends JpaRepository<Client, Long> {
+
+    Optional<Client> findByEmailIgnoreCase(String email);
+
+    boolean existsByEmailIgnoreCase(String email);
+}

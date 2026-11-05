@@ -1,0 +1,15 @@
+# Скомпилированные файлы
+*.class
+
+# Файлы сборки Maven/Gradle
+target/
+build/
+out/
+
+# Настройки IDE (IntelliJ IDEA, Eclipse)
+.idea/
+*.iml
+.settings/
+
+# Системные файлы macOS
+.DS_Store

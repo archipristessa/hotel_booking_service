@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: hotel-booking-service
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/hotel_booking}
+    username: ${DB_USERNAME:hotel}
+    password: ${DB_PASSWORD:hotel}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    # Сессия Hibernate открыта на время HTTP-запроса, поэтому контроллер может
+    # превратить сущность в DTO, даже если связь загружается лениво.
+    open-in-view: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+app:
+  seed:
+    # Демо-данные создаются только если база пустая. Отключить: APP_SEED_ENABLED=false
+    enabled: ${APP_SEED_ENABLED:true}
+
+logging:
+  level:
+    org.hibernate.SQL: debug
